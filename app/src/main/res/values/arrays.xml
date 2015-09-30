@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="periods_array">
+        <item>American Modern</item>
+        <item>Early Modern</item>
+        <item>Late Modern</item>
+        <item>Art Deco</item>
+        <item>Postmodern</item>
+    </string-array>
+
+    <integer-array  name="period_codes_array">
+        <item>35435409</item>
+        <item>35417049</item>
+        <item>35435927</item>
+        <item>35417235</item>
+        <item>35435527</item>
+    </integer-array>
+
+</resources>

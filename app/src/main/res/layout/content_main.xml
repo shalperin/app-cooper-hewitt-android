@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_grid_view"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:numColumns="2"
-    android:layout_marginTop="?attr/actionBarSize"
-    >
 
-</GridView>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <GridView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/main_grid_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:numColumns="2"
+        android:layout_marginTop="?attr/actionBarSize"
+        >
+
+
+    </GridView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:id="@+id/loading_view"
+        >
+    <TextView
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:paddingTop="15px"
+        android:paddingBottom="15px"
+        android:paddingLeft="30px"
+        android:paddingRight="30px"
+    android:text="Loading..."
+    android:background="@color/colorAccent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:textColor="#FFFFFF"
+
+        />
+    </FrameLayout>
+    </FrameLayout>

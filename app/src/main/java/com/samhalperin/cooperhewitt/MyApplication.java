@@ -15,7 +15,7 @@ public class MyApplication extends Application {
     public static final String API_ROOT = "https://api.collection.cooperhewitt.org/rest/";
     public static final int DEFAULT_PER_PAGE = 20;
     public static final String EXTRA_ITEM_ID_KEY = "item_id";
-
+    public static final int EndlessScrollVisibilityThreshold = 5;
     public String getAccessToken() {
         return getResources().getString(R.string.api_key);
     }

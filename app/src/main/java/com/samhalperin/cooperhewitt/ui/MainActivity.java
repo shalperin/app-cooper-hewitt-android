@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final int MODE_SWIPE = 2;
     private int mode;
     private int mCurrentPeriod;
+    private View mLoadingView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Spinner spinner = (Spinner) findViewById(R.id.period_spinner);
-        mgv = new MainGridView(this, findViewById(R.id.main_grid_view));
+        mLoadingView = findViewById(R.id.loading_view);
+        mgv = new MainGridView(this, findViewById(R.id.main_grid_view
+                ), mLoadingView);
         spinner.setOnItemSelectedListener(this);
 
     }
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int[] codes = getResources().getIntArray(R.array.period_codes_array);
         mgv.clear();
         mCurrentPeriod = codes[position];
+        mLoadingView.setVisibility(View.VISIBLE);
         new SearchTask(this, mgv).execute(
                 0,
                 MyApplication.DEFAULT_PER_PAGE,

@@ -23,14 +23,19 @@ public class MainGridView {
     private GridView mView;
     private GridView.OnItemClickListener mOnItemClickListener;
     private boolean mInitted = false;
+    private View mLoadingView;
 
-    public MainGridView(MainActivity context, View view) {
+    public MainGridView(MainActivity context, View view, View loadingView) {
         mContext = context;
         mView = (GridView)view;
+        mLoadingView = loadingView;
         init();
     }
 
     public void onData(int page, int nPerPage, List<SearchObject> data) {
+        if (data.size() != 0) {
+            mLoadingView.setVisibility(View.GONE);
+        }
         getAdapter().addItems(data);
     }
 
@@ -43,6 +48,7 @@ public class MainGridView {
         if (mGridViewAdapter == null) {
             mGridViewAdapter = new MyGridViewAdapter(mContext);
         }
+
         return mGridViewAdapter;
     }
 

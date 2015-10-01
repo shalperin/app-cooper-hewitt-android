@@ -33,7 +33,7 @@ public class DetailTask extends AsyncTask<String, Void, DetailObject> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return d;
 
 

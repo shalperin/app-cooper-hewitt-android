@@ -36,7 +36,7 @@ public class DetailActivity extends AppCompatActivity {
             new FloatingActionButton.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String text = "From the 'Moderne' Android app: " + dv.getUrl();
+                    String text = dv.getUrl() + " (Brought to you by Moderne for Android)";
                     Controller.share(DetailActivity.this, text);
                 }
             });
@@ -55,12 +55,16 @@ public class DetailActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        if (item.getItemId() == android.R.id.home) {
-            finish();
+        switch (item.getItemId()) {
+            case (android.R.id.home):
+                finish();
+                break;
+            case (R.id.action_about):
+                Controller.switchMode(this, Controller.MODE_ABOUT);
+                break;
         }
 
-
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
 

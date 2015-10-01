@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Moderne</string>
     <string name="action_settings">Settings</string>
-
+    <string name="about">About Moderne</string>
+    <string name="abt1">Moderne is a mobile browser for part of the excellent design collection at the Smithsonian Cooper Hewitt museum.  The app is, and always will remain free and non-commercial, and is written by Sam Halperin a fan (not an employee) of the museum.  Please see the Cooper Hewitt Museum\'s website for more information about using the material you find here.</string>
 
 </resources>

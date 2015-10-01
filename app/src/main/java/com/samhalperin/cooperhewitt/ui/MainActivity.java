@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
+import com.samhalperin.cooperhewitt.Controller;
 import com.samhalperin.cooperhewitt.MyApplication;
 import com.samhalperin.cooperhewitt.R;
 import com.samhalperin.cooperhewitt.ui.maingridview.MainGridView;
@@ -63,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 //                break;
 //        }
 
+        switch(item.getItemId()) {
+            case (R.id.action_about):
+                Controller.switchMode(this, Controller.MODE_ABOUT);
+        }
         return true;
     }
 

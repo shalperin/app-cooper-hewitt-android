@@ -27,6 +27,15 @@ public class Controller {
         context.startActivity(i);
     }
 
+    public static void share(Context context, String text){
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+        context.startActivity(shareIntent);
+
+    }
+
 
 
 }

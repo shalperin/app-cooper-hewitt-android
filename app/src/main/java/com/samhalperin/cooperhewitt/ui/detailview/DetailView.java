@@ -1,13 +1,19 @@
 package com.samhalperin.cooperhewitt.ui.detailview;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Point;
+import android.support.design.widget.FloatingActionButton;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.common.base.Joiner;
+import com.samhalperin.cooperhewitt.Controller;
 import com.samhalperin.cooperhewitt.R;
 import com.samhalperin.cooperhewitt.retrofit.DetailTask;
 import com.samhalperin.cooperhewitt.retrofit.pojo.common.Participant;
@@ -25,6 +31,7 @@ public class DetailView {
     private View mView;
     private Activity mContext;
     private String mId;
+    private String mLink;
 
     public DetailView(Activity context, View viewGroup, String id) {
         mView = viewGroup;
@@ -40,6 +47,8 @@ public class DetailView {
 
 
     public void onData(DetailObject data) {
+        mLink = data.getObject().getUrl();
+
         ImageView ivView = (ImageView)mView.findViewById(R.id.detail_image);
         TextView dateView = (TextView)mView.findViewById(R.id.detail_date);
         TextView dimensionsView = (TextView)mView.findViewById(R.id.detail_dimensions);
@@ -102,4 +111,9 @@ public class DetailView {
         }
         return Joiner.on(", ").join(participantNames);
     }
+
+    public String getUrl() {
+        return mLink;
+    }
+
 }

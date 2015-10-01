@@ -1,11 +1,15 @@
 package com.samhalperin.cooperhewitt.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.samhalperin.cooperhewitt.Controller;
 import com.samhalperin.cooperhewitt.MyApplication;
 import com.samhalperin.cooperhewitt.R;
 import com.samhalperin.cooperhewitt.ui.detailview.DetailView;
@@ -22,9 +26,21 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        String objectId = getIntent().getExtras().getString(MyApplication.EXTRA_ITEM_ID_KEY);
-        new DetailView(this, findViewById(R.id.details), objectId);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        String objectId = getIntent().getExtras().getString(MyApplication.EXTRA_ITEM_ID_KEY);
+
+        final DetailView dv = new DetailView(this, findViewById(R.id.details), objectId);
+
+        FloatingActionButton shareButton = (FloatingActionButton)findViewById(R.id.share_fab);
+        shareButton.setOnClickListener(
+            new FloatingActionButton.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String text = "From the 'Moderne' Android app: " + dv.getUrl();
+                    Controller.share(DetailActivity.this, text);
+                }
+            });
+
     }
 
     @Override
@@ -46,6 +62,7 @@ public class DetailActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 
 

@@ -31,14 +31,22 @@ public class SearchTask extends AsyncTask<Integer, Void, List<SearchObject>> {
         mPage = params[0];
         mNPerPage = params[1];
         mPeriod = params[2];
-        SearchObjects s = SearchClient
-                .getSearchApiClient()
-                .searchData(
-                        ((MyApplication) mContext.getApplication()).getAccessToken(),
-                        mPage,
-                        MyApplication.DEFAULT_PER_PAGE,
-                        mPeriod
-                );
+        SearchObjects s;
+
+        try {
+            s = SearchClient
+                    .getSearchApiClient()
+                    .searchData(
+                            ((MyApplication) mContext.getApplication()).getAccessToken(),
+                            mPage,
+                            MyApplication.DEFAULT_PER_PAGE,
+                            mPeriod
+                    );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<SearchObject>();
+        }
+
         return filterOutItemsWithNoImages(s.getObjects());
     }
 

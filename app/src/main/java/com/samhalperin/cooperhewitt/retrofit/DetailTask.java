@@ -23,11 +23,17 @@ public class DetailTask extends AsyncTask<String, Void, DetailObject> {
     protected DetailObject doInBackground(String... params) {
         String id = params[0];
 
-        DetailObject d = DetailClient
-                .getDetailApiClient()
-                .getObject(
-                        ((MyApplication) mContext.getApplication()).getAccessToken(),
-                        id);
+        DetailObject d = new DetailObject();
+        try {
+            d = DetailClient
+                    .getDetailApiClient()
+                    .getObject(
+                            ((MyApplication) mContext.getApplication()).getAccessToken(),
+                            id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         return d;
 
 

@@ -8,6 +8,25 @@
         <item>Late Modern</item>
         <item>Art Deco</item>
         <item>Postmodern</item>
+        <item>Rococo</item>
+        <item>Hudson River School</item>
+        <item>Neoclassical</item>
+        <item>Wiener Werkstätte</item>
+        <item>Baroque</item>
+        <item>postwar</item>
+        <item>Civil War</item>
+        <item>Northern Renaissance</item>
+        <item>Victorian</item>
+        <item>Psychedelic</item>
+        <item>post-Civil War</item>
+        <item>World War II</item>
+        <item>Late Renaissance</item>
+        <item>Jugendstil/Art Deco</item>
+        <item>Northern Baroque</item>
+        <item>Regency</item>
+        <item>American Arts and Crafts</item>
+        <item>Renaissance</item>
+        <item>Art Nouveau</item>
     </string-array>
 
     <integer-array  name="period_codes_array">
@@ -16,6 +35,25 @@
         <item>35435927</item>
         <item>35417235</item>
         <item>35435527</item>
+        <item>35417101</item>
+        <item>35417175</item>
+        <item>35417089</item>
+        <item>35435467</item>
+        <item>35417081</item>
+        <item>35435429</item>
+        <item>35417141</item>
+        <item>35417075</item>
+        <item>35417269</item>
+        <item>35435941</item>
+        <item>35417233</item>
+        <item>35417341</item>
+        <item>35417085</item>
+        <item>35435521</item>
+        <item>35417077</item>
+        <item>35417337</item>
+        <item>35417379</item>
+        <item>35417073</item>
+        <item>35417231</item>
     </integer-array>
 
 </resources>

@@ -3,7 +3,6 @@ package com.samhalperin.cooperhewitt.ui;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,24 +18,17 @@ import com.samhalperin.cooperhewitt.retrofit.SearchTask;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private MainGridView mgv;
-    private static final int MODE_GRID = 1;
-    private static final int MODE_SWIPE = 2;
-    private int mode;
     private int mCurrentPeriod;
-    private View mLoadingView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mgv = (MainGridView)findViewById(R.id.main_grid_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Spinner spinner = (Spinner) findViewById(R.id.period_spinner);
-        mLoadingView = findViewById(R.id.loading_view);
-        mgv = new MainGridView(this, findViewById(R.id.main_grid_view
-                ), mLoadingView);
         spinner.setOnItemSelectedListener(this);
-
     }
 
 
@@ -49,21 +41,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-//        switch(item.getItemId()) {
-//            case (R.id.toggle_display):
-//                if (mode == MODE_GRID) {
-//                    mode = MODE_SWIPE;
-//                    item.setIcon(R.drawable.grid);
-//                } else {
-//                    mode = MODE_GRID;
-//                    item.setIcon(R.drawable.swipe);
-//                }
-//                break;
-//        }
-
         switch(item.getItemId()) {
             case (R.id.action_about):
                 Controller.switchMode(this, Controller.MODE_ABOUT);
@@ -75,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int[] codes = getResources().getIntArray(R.array.period_codes_array);
         mgv.clear();
         mCurrentPeriod = codes[position];
-        mLoadingView.setVisibility(View.VISIBLE);
+        mgv.getLoadingView().setVisibility(View.VISIBLE);
         new SearchTask(this, mgv).execute(
                 0,
                 MyApplication.DEFAULT_PER_PAGE,

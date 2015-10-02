@@ -1,11 +1,14 @@
 package com.samhalperin.cooperhewitt.ui.maingridview;
 
+import android.content.Context;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.samhalperin.cooperhewitt.Controller;
+import com.samhalperin.cooperhewitt.R;
 import com.samhalperin.cooperhewitt.retrofit.SearchTask;
 import com.samhalperin.cooperhewitt.ui.MainActivity;
 import com.samhalperin.cooperhewitt.MyApplication;
@@ -16,25 +19,20 @@ import java.util.List;
 /**
  * Created by sqh on 9/30/15.
  */
-public class MainGridView {
-    final MainActivity mContext;
+public class MainGridView extends GridView {
     private MyGridViewAdapter mGridViewAdapter;
-    private EndlessScrollListener mEndlessScrollListener;
-    private GridView mView;
-    private GridView.OnItemClickListener mOnItemClickListener;
     private boolean mInitted = false;
-    private View mLoadingView;
+    private MainActivity mActivity;
 
-    public MainGridView(MainActivity context, View view, View loadingView) {
-        mContext = context;
-        mView = (GridView)view;
-        mLoadingView = loadingView;
+    public MainGridView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        mActivity = (MainActivity)context; // Refactor?
         init();
     }
 
     public void onData(int page, int nPerPage, List<SearchObject> data) {
         if (data.size() != 0) {
-            mLoadingView.setVisibility(View.GONE);
+          getLoadingView().setVisibility(View.GONE);
         }
         getAdapter().addItems(data);
     }
@@ -46,7 +44,7 @@ public class MainGridView {
         }
 
         if (mGridViewAdapter == null) {
-            mGridViewAdapter = new MyGridViewAdapter(mContext);
+            mGridViewAdapter = new MyGridViewAdapter(mActivity);// this typecast is lame;
         }
 
         return mGridViewAdapter;
@@ -55,44 +53,39 @@ public class MainGridView {
 
     private void init() {
         mInitted = true;
-        mView.setAdapter(getAdapter());
-        mView.setOnScrollListener(getEndlessScrollListener());
-        mView.setOnItemClickListener(getOnItemClickListener());
+        setAdapter(getAdapter());
+        setOnScrollListener(endlessScrollListener);
+        setOnItemClickListener(onItemClickListener);
 
     }
 
-
-    private EndlessScrollListener getEndlessScrollListener() {
-        if (mEndlessScrollListener == null) {
-            mEndlessScrollListener = new EndlessScrollListener() {
-                @Override
-                public boolean onLoadMore(int page, int totalItemsCount) {
-                    // Triggered only when new data needs to be appended to the list
-                    // Add whatever code is needed to append new items to your AdapterView
-                    new SearchTask(mContext, MainGridView.this).execute(page, MyApplication.DEFAULT_PER_PAGE,
-                            mContext.getCurrentPeriod());
-                    // or customLoadMoreDataFromApi(totalItemsCount);
-                    return true; // ONLY if more data is actually being loaded; false otherwise.
-                }
-            };
-        }
-        return mEndlessScrollListener;
-    }
-
-    private GridView.OnItemClickListener getOnItemClickListener() {
-        if (mOnItemClickListener == null) {
-            mOnItemClickListener = new GridView.OnItemClickListener(){
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    SearchObject item = getAdapter().getItem(position);
-                    Controller.startItemDetail(mContext, item.getId());
-                }
-            };
-        }
-        return mOnItemClickListener;
-    }
+    EndlessScrollListener endlessScrollListener =
+        new EndlessScrollListener() {
+            @Override
+            public boolean onLoadMore(int page, int totalItemsCount) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to your AdapterView
+                new SearchTask(mActivity, MainGridView.this).execute(page, MyApplication.DEFAULT_PER_PAGE,
+                        mActivity.getCurrentPeriod());
+                // or customLoadMoreDataFromApi(totalItemsCount);
+                return true; // ONLY if more data is actually being loaded; false otherwise.
+            }
+        };
 
     public void clear() {
         getAdapter().clear();
+    }
+
+
+    OnItemClickListener onItemClickListener = new GridView.OnItemClickListener(){
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            SearchObject item = getAdapter().getItem(position);
+            Controller.startItemDetail(getContext(), item.getId());
+        }
+    };
+
+    public View getLoadingView() {
+        return ((View)getParent()).findViewById(R.id.main_grid_view_loading_view);
     }
 }

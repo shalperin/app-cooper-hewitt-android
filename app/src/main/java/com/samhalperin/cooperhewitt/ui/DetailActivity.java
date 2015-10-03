@@ -29,7 +29,8 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String objectId = getIntent().getExtras().getString(MyApplication.EXTRA_ITEM_ID_KEY);
 
-        final DetailView dv = new DetailView(this, findViewById(R.id.details), objectId);
+        final DetailView dv = (DetailView)findViewById(R.id.detail_view);
+        dv.load(objectId);
 
         FloatingActionButton shareButton = (FloatingActionButton)findViewById(R.id.share_fab);
         shareButton.setOnClickListener(

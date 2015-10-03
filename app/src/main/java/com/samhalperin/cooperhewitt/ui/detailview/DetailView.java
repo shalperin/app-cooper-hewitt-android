@@ -1,19 +1,15 @@
 package com.samhalperin.cooperhewitt.ui.detailview;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.graphics.Point;
-import android.support.design.widget.FloatingActionButton;
+import android.util.AttributeSet;
 import android.view.Display;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.common.base.Joiner;
-import com.samhalperin.cooperhewitt.Controller;
 import com.samhalperin.cooperhewitt.R;
 import com.samhalperin.cooperhewitt.retrofit.DetailTask;
 import com.samhalperin.cooperhewitt.retrofit.pojo.common.Participant;
@@ -27,39 +23,39 @@ import java.util.List;
 /**
  * Created by sqh on 9/30/15.
  */
-public class DetailView {
-    private View mView;
-    private Activity mContext;
-    private String mId;
+public class DetailView extends LinearLayout {
     private String mLink;
+    private Activity mActivity;
+    private ImageView mIvView;
+    private TextView mDateView;
+    private TextView mDimensionsView;
+    private TextView mMediumView;
+    private TextView mTitleView;
+    private TextView mDescriptionView;
+    private TextView mParticipantsView;
 
-    public DetailView(Activity context, View viewGroup, String id) {
-        mView = viewGroup;
-        mContext = context;
-        mId = id;
+    public DetailView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        inflate(getContext(), R.layout.detail_view, this);
+        mActivity = (Activity)context;
 
-        init();
+        mIvView = (ImageView)findViewById(R.id.detail_image);
+        mDateView = (TextView)findViewById(R.id.detail_date);
+        mDimensionsView = (TextView)findViewById(R.id.detail_dimensions);
+        mMediumView = (TextView)findViewById(R.id.detail_medium);
+        mTitleView = (TextView)findViewById(R.id.detail_title);
+        mDescriptionView = (TextView)findViewById(R.id.detail_description);
+        mParticipantsView = (TextView)findViewById(R.id.detail_participants);
     }
 
-    private void init() {
-        new DetailTask(mContext, this).execute(mId);
+    public void load( String id) {
+        new DetailTask(mActivity, this).execute(id);
     }
-
 
     public void onData(DetailObject data) {
         mLink = data.getObject().getUrl();
 
-        ImageView ivView = (ImageView)mView.findViewById(R.id.detail_image);
-        TextView dateView = (TextView)mView.findViewById(R.id.detail_date);
-        TextView dimensionsView = (TextView)mView.findViewById(R.id.detail_dimensions);
-        TextView mediumView = (TextView)mView.findViewById(R.id.detail_medium);
-        TextView titleView = (TextView)mView.findViewById(R.id.detail_title);
-        TextView descriptionView = (TextView)mView.findViewById(R.id.detail_description);
-        TextView participantsView = (TextView)mView.findViewById(R.id.detail_participants);
-
-
         com.samhalperin.cooperhewitt.retrofit.pojo.detailobject.Object o = data.getObject();
-        String id = o.getId();
         String date = o.getDate();
         String dimensions = o.getDimensions();
         String medium = o.getMedium();
@@ -69,30 +65,30 @@ public class DetailView {
         String partipants = getParticipantNames(o);
 
 
-        dateView.setText(date);
-        dimensionsView.setText(dimensions);
-        mediumView.setText(medium);
-        titleView.setText(title);
-        descriptionView.setText(description);
+        mDateView.setText(date);
+        mDimensionsView.setText(dimensions);
+        mMediumView.setText(medium);
+        mTitleView.setText(title);
+        mDescriptionView.setText(description);
         if (imageUrl != null) {
-            setImage(ivView, imageUrl);
+            setImage(mIvView, imageUrl);
         }
-        participantsView.setText(partipants);
-        dateView.setText(date);
-        dimensionsView.setText(dimensions);
-        mediumView.setText(medium);
+        mParticipantsView.setText(partipants);
+        mDateView.setText(date);
+        mDimensionsView.setText(dimensions);
+        mMediumView.setText(medium);
     }
 
     private void setImage(ImageView target, String url) {
         // this is going to be ugly if anyone ever wants to change from a full display width layout.
-        Display display = mContext.getWindowManager().getDefaultDisplay();
+        Display display = mActivity.getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
         Picasso
-            .with(mContext)
+            .with(getContext())
             .load(url)
-            .resize(width, 0)  //ugh
+            .resize(width, 0)
             .into(target);
     }
 

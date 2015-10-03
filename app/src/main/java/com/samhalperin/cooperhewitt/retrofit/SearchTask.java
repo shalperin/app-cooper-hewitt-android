@@ -52,7 +52,7 @@ public class SearchTask extends AsyncTask<Integer, Void, List<SearchObject>> {
 
     @Override
     protected void onPostExecute(List<SearchObject> searchObjects) {
-        mHandler.onData(mPage, mNPerPage, searchObjects);
+        mHandler.onData(searchObjects);
     }
 
     private List<SearchObject> filterOutItemsWithNoImages(List<SearchObject> in) {

@@ -30,7 +30,7 @@ public class MainGridView extends GridView {
         init();
     }
 
-    public void onData(int page, int nPerPage, List<SearchObject> data) {
+    public void onData( List<SearchObject> data) {
         if (data.size() != 0) {
           getLoadingView().setVisibility(View.GONE);
         }
@@ -44,7 +44,7 @@ public class MainGridView extends GridView {
         }
 
         if (mGridViewAdapter == null) {
-            mGridViewAdapter = new MyGridViewAdapter(mActivity);// this typecast is lame;
+            mGridViewAdapter = new MyGridViewAdapter(mActivity);
         }
 
         return mGridViewAdapter;
@@ -86,6 +86,7 @@ public class MainGridView extends GridView {
     };
 
     public View getLoadingView() {
+        //Refactor?  Weird dependency on sibling in XML.
         return ((View)getParent()).findViewById(R.id.main_grid_view_loading_view);
     }
 }

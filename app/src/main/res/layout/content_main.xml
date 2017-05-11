@@ -21,12 +21,12 @@
 
         <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="15px"
-            android:paddingBottom="15px"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
             android:text="Loading..."
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimary"
             android:layout_gravity="center_vertical|center_horizontal"
             android:textColor="#FFFFFF" />
     </FrameLayout>

@@ -18,14 +18,12 @@ import com.samhalperin.cooperhewitt.ui.maingridview.MainGridView;
 /**
  * Created by sqh on 9/30/15.
  */
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setup(R.layout.activity_detail);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String objectId = getIntent().getExtras().getString(MyApplication.EXTRA_ITEM_ID_KEY);
 

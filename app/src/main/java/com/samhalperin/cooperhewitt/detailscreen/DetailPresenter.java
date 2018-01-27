@@ -1,0 +1,46 @@
+package com.samhalperin.cooperhewitt.detailscreen;
+
+import android.content.Context;
+
+import com.samhalperin.cooperhewitt.data.models.detailobject.DetailObject;
+import com.samhalperin.cooperhewitt.data.repository.RepositoryContract;
+
+/**
+ * Created by samhalperin on 1/27/18.
+ */
+
+public class DetailPresenter implements DetailContract.UserActionsHandler {
+    private RepositoryContract mRepository;
+    private DetailContract.View mView;
+    private Context mContext;
+
+    public DetailPresenter(Context context, DetailContract.View view, RepositoryContract repository) {
+        mRepository = repository;
+        mView = view;
+        mContext = context;
+    }
+
+    @Override
+    public void loadDetailObject(String id) {
+        mRepository.getDetailObject(
+                id,
+                new RepositoryContract.DetailObjectLoadedCallbacks() {
+                    @Override
+                    public void onDetailObjectLoaded(DetailObject detailObject) {
+                        mView.displayDetailObject(detailObject);
+                    }
+                });
+    }
+
+    @Override
+    public void shareDetailObject(String id) {
+        mRepository.getDetailObject(
+                id,
+                new RepositoryContract.DetailObjectLoadedCallbacks() {
+                    @Override
+                    public void onDetailObjectLoaded(DetailObject detailObject) {
+                        mView.shareDetailObject(detailObject);
+                    }
+                });
+    }
+}

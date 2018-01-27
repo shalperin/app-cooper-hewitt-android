@@ -8,6 +8,7 @@ api_key.xml
 /build
 /captures
 app/src/release/res/values/google_maps_api.xml
+app/src/main/res/values/api_key.xml
 app-release.apk
 #built application files
 *.apk

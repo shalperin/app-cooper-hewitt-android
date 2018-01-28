@@ -16,8 +16,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        mavenCentral()
         google()
+        mavenCentral()
+
     }
 }
 
@@ -33,7 +34,7 @@ ext {
     versionName = "1.02"
     supportLibraryVersion = "27.0.2"
 
-    junitVersion = "4.12"
+    junitVersion = "3.8"
     mockitoVersion = '1.10.19'
     powerMockito = '1.6.2'
     hamcrestVersion = '1.3'

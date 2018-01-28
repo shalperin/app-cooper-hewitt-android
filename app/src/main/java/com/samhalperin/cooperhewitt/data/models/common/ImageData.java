@@ -3,9 +3,6 @@ package com.samhalperin.cooperhewitt.data.models.common;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by sqh on 9/30/15.
- */
 public class ImageData {
     @SerializedName("url")
     @Expose

@@ -4,9 +4,6 @@ import com.samhalperin.cooperhewitt.application.CooperHewittApplication;
 
 import retrofit.RestAdapter;
 
-/**
- * Created by sqh on 9/27/15.
- */
 public class DetailClient {
     private static DetailApiInterface sDetailService;
 

@@ -9,9 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by sqh on 9/29/15.
- */
 public class CooperHewittApplication extends Application {
 
     /*
@@ -24,12 +21,13 @@ public class CooperHewittApplication extends Application {
      */
     public static final int DEFAULT_PER_PAGE = 40;
 
+    /* In the main RV, the number of items left after which a scroll is triggered. */
+    public static final int EndlessScrollVisibilityThreshold = 10;
 
     /* The bundle extra for making the link between the home page and a detail page */
     public static final String EXTRA_ITEM_ID_KEY = "item_id";
 
-    /* A config option for endless scroll. */
-    public static final int EndlessScrollVisibilityThreshold = 15;
+
 
     /* If this is hosted in a public github repo it is better
        to gitignore the API key.  For demo purposes comment out and

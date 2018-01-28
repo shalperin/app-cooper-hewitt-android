@@ -5,9 +5,6 @@ import com.samhalperin.cooperhewitt.data.models.searchobjects.SearchObjects;
 import retrofit.http.GET;
 import retrofit.http.Query;
 
-/**
- * Created by sqh on 9/27/15.
- */
 public interface SearchApiInterface {
     @GET("/?method=cooperhewitt.search.objects&has_images=1")
     SearchObjects searchData(

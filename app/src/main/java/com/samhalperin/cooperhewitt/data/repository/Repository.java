@@ -39,8 +39,9 @@ public class Repository implements RepositoryContract {
     }
 
     @Override
-    public void getSearchPage(int pageNumber, int nPerPage, String period, NewSearchPageLoadedCallbacks callbacks) {
+    public void getSearchPage(int pageNumber, int nPerPage, int period, NewSearchPageLoadedCallbacks callbacks) {
         SearchTask task = new SearchTask(mApiKey, callbacks);
+        task.execute(pageNumber, nPerPage, period);
     }
 
     private class DetailTask extends AsyncTask<String, Void, DetailObject> {

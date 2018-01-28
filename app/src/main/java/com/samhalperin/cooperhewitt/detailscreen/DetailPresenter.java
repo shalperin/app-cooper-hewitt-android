@@ -5,10 +5,6 @@ import android.content.Context;
 import com.samhalperin.cooperhewitt.data.models.detailobject.DetailObject;
 import com.samhalperin.cooperhewitt.data.repository.RepositoryContract;
 
-/**
- * Created by samhalperin on 1/27/18.
- */
-
 public class DetailPresenter implements DetailContract.UserActionsHandler {
     private RepositoryContract mRepository;
     private DetailContract.View mView;

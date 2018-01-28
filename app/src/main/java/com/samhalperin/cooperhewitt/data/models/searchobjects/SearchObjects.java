@@ -6,9 +6,6 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by sqh on 9/29/15.
- */
 @Generated("org.jsonschema2pojo")
 public class SearchObjects {
 

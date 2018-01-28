@@ -3,6 +3,7 @@
 
 
     <string-array name="periods_array">
+        <item>World War II</item>
         <item>American Modern</item>
         <item>Early Modern</item>
         <item>Late Modern</item>
@@ -19,7 +20,6 @@
         <item>Victorian</item>
         <item>Psychedelic</item>
         <item>post-Civil War</item>
-        <item>World War II</item>
         <item>Late Renaissance</item>
         <item>Jugendstil/Art Deco</item>
         <item>Northern Baroque</item>
@@ -30,6 +30,7 @@
     </string-array>
 
     <integer-array  name="period_codes_array">
+        <item>35417341</item>
         <item>35435409</item>
         <item>35417049</item>
         <item>35435927</item>
@@ -46,7 +47,6 @@
         <item>35417269</item>
         <item>35435941</item>
         <item>35417233</item>
-        <item>35417341</item>
         <item>35417085</item>
         <item>35435521</item>
         <item>35417077</item>

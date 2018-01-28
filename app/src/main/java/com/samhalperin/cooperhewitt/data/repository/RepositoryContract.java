@@ -5,10 +5,6 @@ import com.samhalperin.cooperhewitt.data.models.searchobjects.SearchObject;
 
 import java.util.List;
 
-/**
- * Created by samhalperin on 1/27/18.
- */
-
 public interface RepositoryContract {
 
     public interface NewSearchPageLoadedCallbacks {
@@ -21,5 +17,5 @@ public interface RepositoryContract {
 
     public void getDetailObject(String detailObjectId, DetailObjectLoadedCallbacks callbacks);
 
-    public void getSearchPage(int pageNumber, int nPerPage, String period, NewSearchPageLoadedCallbacks callbacks);
+    public void getSearchPage(int pageNumber, int nPerPage, int period, NewSearchPageLoadedCallbacks callbacks);
 }

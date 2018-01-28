@@ -5,11 +5,6 @@ import android.support.v7.widget.Toolbar;
 
 import com.samhalperin.cooperhewitt.R;
 
-/**
-* The primary purpose of this activity base class is to set up the toolbar
- *
- **/
-
 public class BaseActivity extends AppCompatActivity {
 
     protected void setup(int contentView) {

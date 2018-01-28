@@ -34,6 +34,7 @@ ext {
     versionName = "1.02"
     supportLibraryVersion = "27.0.2"
 
+    picassoVersion = "2.5.2"
     junitVersion = "3.8"
     mockitoVersion = '1.10.19'
     powerMockito = '1.6.2'
@@ -41,4 +42,6 @@ ext {
     runnerVersion = '0.5'
     rulesVersion = '0.5'
     espressoVersion = '2.2.2'
+    retrofitVersion = '1.9.0'
+    okHttpVersion = '2.0.0'
 }

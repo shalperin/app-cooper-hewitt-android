@@ -8,12 +8,10 @@ import com.samhalperin.cooperhewitt.data.repository.RepositoryContract;
 public class DetailPresenter implements DetailContract.UserActionsHandler {
     private RepositoryContract mRepository;
     private DetailContract.View mView;
-    private Context mContext;
 
-    public DetailPresenter(Context context, DetailContract.View view, RepositoryContract repository) {
+    public DetailPresenter(DetailContract.View view, RepositoryContract repository) {
         mRepository = repository;
         mView = view;
-        mContext = context;
     }
 
     @Override

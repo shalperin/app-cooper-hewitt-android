@@ -39,7 +39,7 @@ public class DetailActivity extends BaseActivity implements DetailContract.View 
                 }
             });
 
-        mPresenter = new DetailPresenter(this, this,new Repository(this));
+        mPresenter = new DetailPresenter(this, new Repository(this));
         mPresenter.loadDetailObject(objectId);
     }
 

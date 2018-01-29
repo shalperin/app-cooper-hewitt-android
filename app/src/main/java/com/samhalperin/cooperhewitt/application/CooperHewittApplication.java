@@ -14,7 +14,7 @@ public class CooperHewittApplication extends Application {
     /*
     The root of the Cooper Hewitt API
      */
-    public static final String API_ROOT = "https://api.collection.cooperhewitt.org/rest/";
+    public static final String API_ROOT = "https://api.collection.cooperhewitt.org";
 
     /*
     The app uses a paging interface of images, this is the default n per page.

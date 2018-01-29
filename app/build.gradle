@@ -31,12 +31,11 @@ dependencies {
     compile "com.squareup.picasso:picasso:$rootProject.picassoVersion"
 
     // Dependencies for Retrofit
-    compile "com.squareup.retrofit:retrofit:$rootProject.retrofitVersion"
-    compile "com.squareup.okhttp:okhttp-urlconnection:$rootProject.okHttpVersion"
-    compile "com.squareup.okhttp:okhttp:$rootProject.okHttpVersion"
+    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
     compile 'org.glassfish:javax.annotation:10.0-b28'
     compile 'com.google.guava:guava:12.0'
-
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
 
     // Dependencies for local unit tests
     testCompile "junit:junit:$rootProject.ext.junitVersion"

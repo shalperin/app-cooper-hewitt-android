@@ -26,13 +26,13 @@ public class MasterPresenter implements MasterContract.UserActionHandler{
         if (clear)
             mView.clearResults();
         mView.displayProgressBar();
-        mRepository.getSearchPage(pageNumber, CooperHewittApplication.DEFAULT_PER_PAGE,
-                mArtisticPeriodSelected, new RepositoryContract.NewSearchPageLoadedCallbacks() {
-                    @Override
-                    public void onNewPageLoaded(List<SearchObject> page) {
-                        mView.displayPage(page);
-                        mView.hideProgressBar();
-                    }
+        mRepository.getSearchPage(
+                pageNumber,
+                CooperHewittApplication.DEFAULT_PER_PAGE,
+                mArtisticPeriodSelected,
+                (page) -> {
+                    mView.displayPage(page);
+                    mView.hideProgressBar();
                 }
         );
     }

@@ -1,7 +1,9 @@
 package com.samhalperin.cooperhewitt.application;
 
 import android.app.Application;
+import android.os.StrictMode;
 
+import com.samhalperin.cooperhewitt.BuildConfig;
 import com.samhalperin.cooperhewitt.R;
 
 import java.util.ArrayList;
@@ -37,4 +39,15 @@ public class CooperHewittApplication extends Application {
         return getResources().getString(R.string.api_key);
     }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        if (BuildConfig.DEBUG) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .build();
+            StrictMode.setThreadPolicy(policy);
+        }
+    }
 }

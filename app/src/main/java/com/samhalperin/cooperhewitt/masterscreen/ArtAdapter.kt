@@ -16,7 +16,8 @@ class ArtAdapter(private val context: Context, private val imageViewClickListene
         return mItems.size
     }
 
-    inner class ViewHolder(var mImageView: SquareImageViewWithId) : RecyclerView.ViewHolder(mImageView)
+    inner class ViewHolder(var mImageView: SquareImageViewWithId)
+        : RecyclerView.ViewHolder(mImageView)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val target = holder.mImageView

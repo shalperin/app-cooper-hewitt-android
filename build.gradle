@@ -30,8 +30,8 @@ task clean(type: Delete) {
 
 ext {
 
-    versionCode = 4
-    versionName = "1.02"
+    versionCode = 6
+    versionName = "1.06"
     picassoVersion = "2.5.2"
     junitVersion = "3.8"
     mockitoVersion = '1.10.19'
